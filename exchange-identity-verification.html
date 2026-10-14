@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kursov24 — Верификация личности | KYC</title>
+    <title>Kursov24 — Верификация личности</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -262,7 +262,7 @@
             color: var(--text);
         }
 
-        /* ========== PAGE HERO ========== */
+        /* ========== PAGE CONTENT ========== */
         .page-hero {
             text-align: center;
             padding: 56px 40px 40px;
@@ -306,427 +306,128 @@
             line-height: 1.6;
         }
 
-        /* ========== MAIN CONTENT CARD ========== */
-        .content-card {
-            max-width: 700px;
-            margin: 0 auto 60px;
+        /* ========== VERIFICATION CARD ========== */
+        .verify-card {
+            max-width: 600px;
+            margin: 0 auto 80px;
             background: var(--white);
             border-radius: 16px;
-            padding: 40px;
+            padding: 48px 40px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
+            text-align: center;
             animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
             opacity: 0;
         }
 
-        /* ========== SECTION TITLES ========== */
-        .section-title {
-            font-size: 20px;
+        .verify-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+        }
+
+        .verify-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--orange);
+        }
+
+        .verify-card h2 {
+            font-size: 22px;
             font-weight: 700;
             color: var(--text);
-            margin-bottom: 20px;
-            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .verify-card .verify-text {
+            font-size: 15px;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .sumsub-btn {
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .section-title svg {
-            width: 22px;
-            height: 22px;
-            color: var(--orange);
-            flex-shrink: 0;
-        }
-
-        .section-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 32px 0;
-        }
-
-        /* ========== REQUIREMENTS LIST ========== */
-        .req-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .req-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 14px 18px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text);
-            line-height: 1.5;
-            transition: border-color 0.2s ease;
-        }
-
-        .req-list li:hover {
-            border-color: var(--orange-border);
-        }
-
-        .req-list li .req-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--orange-bg);
-            border: 1px solid var(--orange-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .req-list li .req-icon svg {
-            width: 12px;
-            height: 12px;
-            color: var(--orange);
-        }
-
-        /* ========== DOCUMENT CARDS ========== */
-        .doc-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .doc-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 20px;
-            text-align: center;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: default;
-        }
-
-        .doc-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border-color: var(--orange-border);
-        }
-
-        .doc-card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            background: var(--orange-bg);
-            border: 1px solid var(--orange-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-
-        .doc-card-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--orange);
-        }
-
-        .doc-card h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .doc-card p {
-            font-size: 13px;
-            color: var(--text-3);
-            line-height: 1.5;
-        }
-
-        /* ========== VERIFICATION OPTIONS ========== */
-        .verify-option {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 16px;
-            transition: border-color 0.2s ease;
-        }
-
-        .verify-option:hover {
-            border-color: var(--orange-border);
-        }
-
-        .verify-option:last-child {
-            margin-bottom: 0;
-        }
-
-        .verify-option-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .verify-option-num {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
             background: var(--orange);
             color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .verify-option-title {
+            border: none;
+            border-radius: var(--radius);
+            padding: 16px 36px;
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 700;
-            color: var(--text);
-        }
-
-        .verify-option-body {
-            padding-left: 46px;
-        }
-
-        .verify-option-body p {
-            font-size: 14px;
-            color: var(--text-2);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .verify-option-body p:last-child {
-            margin-bottom: 0;
-        }
-
-        .verify-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            height: 46px;
-            padding: 0 28px;
-            border-radius: var(--radius);
-            background: var(--orange);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            border: none;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
         }
 
-        .verify-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .verify-btn:hover::before {
-            opacity: 1;
-        }
-
-        .verify-btn:hover {
+        .sumsub-btn:hover {
             background: var(--orange-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(232, 102, 10, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 102, 10, 0.3);
+            color: var(--white);
         }
 
-        .verify-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(232, 102, 10, 0.25);
-        }
-
-        .verify-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .email-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 14px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--orange);
-            font-family: 'Inter', monospace;
-        }
-
-        .email-highlight svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* ========== TIMELINE / PROCESS ========== */
-        .timeline {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            padding: 8px 0;
-        }
-
-        .timeline-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            position: relative;
-        }
-
-        .timeline-step-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--orange-bg);
-            border: 2px solid var(--orange-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .timeline-step-icon svg {
+        .sumsub-btn svg {
             width: 20px;
             height: 20px;
-            color: var(--orange);
         }
 
-        .timeline-step-text {
+        .verify-note {
+            margin-top: 24px;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            text-align: center;
-        }
-
-        .timeline-step-sub {
-            font-size: 12px;
-            font-weight: 400;
             color: var(--text-3);
-        }
-
-        .timeline-connector {
-            width: 60px;
-            height: 2px;
-            background: var(--orange-border);
-            position: relative;
-            margin-bottom: 30px;
-            flex-shrink: 0;
-        }
-
-        .timeline-connector::after {
-            content: '';
-            position: absolute;
-            right: -3px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 6px solid var(--orange-border);
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-        }
-
-        /* ========== INFO NOTES ========== */
-        .info-notes {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .info-note {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 14px 16px;
-            background: var(--orange-bg);
-            border: 1px solid var(--orange-border);
-            border-radius: var(--radius);
-            font-size: 13px;
-            color: var(--text-2);
-            line-height: 1.5;
-        }
-
-        .info-note svg {
-            width: 18px;
-            height: 18px;
-            color: var(--orange);
-            flex-shrink: 0;
-            margin-top: 1px;
+            line-height: 1.6;
         }
 
         /* ========== CTA SECTION ========== */
         .cta-section {
-            background: linear-gradient(135deg, #111111 0%, #1a1a1a 40%, #252525 100%);
-            padding: 80px 40px;
+            background: var(--dark);
+            padding: 72px 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(232, 102, 10, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(232, 102, 10, 0.05) 0%, transparent 40%);
-            pointer-events: none;
         }
 
         .cta-inner {
             max-width: 560px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .cta-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(232, 102, 10, 0.12);
-            border: 1px solid rgba(232, 102, 10, 0.2);
+            background: rgba(232, 102, 10, 0.15);
+            border: 1px solid rgba(232, 102, 10, 0.25);
             border-radius: 100px;
-            padding: 6px 14px;
+            padding: 8px 16px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--orange);
-            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            margin-bottom: 20px;
         }
 
         .cta-section h2 {
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 800;
             color: var(--text-inv);
-            margin-bottom: 14px;
             letter-spacing: -0.5px;
+            margin-bottom: 12px;
         }
 
         .cta-section p {
             font-size: 16px;
             color: var(--text-inv-2);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             line-height: 1.6;
         }
 
@@ -734,15 +435,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            height: 52px;
-            padding: 0 32px;
-            border-radius: var(--radius);
             background: var(--orange);
             color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
             border: none;
+            border-radius: var(--radius);
+            padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -750,22 +450,19 @@
         .cta-btn:hover {
             background: var(--orange-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(232, 102, 10, 0.35);
+            box-shadow: 0 8px 24px rgba(232, 102, 10, 0.35);
+            color: var(--white);
         }
 
         .cta-btn svg {
             width: 18px;
             height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-btn:hover svg {
-            transform: translateX(3px);
         }
 
         /* ========== FOOTER ========== */
         .footer {
             background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.06);
             padding: 64px 40px 32px;
         }
 
@@ -781,18 +478,11 @@
             margin-bottom: 48px;
         }
 
-        .footer-brand .logo {
-            font-size: 24px;
-            color: var(--text-inv);
-            margin-bottom: 14px;
-            display: inline-block;
-        }
-
         .footer-brand p {
             font-size: 14px;
-            color: var(--text-inv-2);
-            line-height: 1.6;
-            max-width: 280px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            margin-top: 16px;
             margin-bottom: 20px;
         }
 
@@ -802,31 +492,29 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-inv-2);
+            color: rgba(255,255,255,0.5);
             transition: all 0.2s ease;
         }
 
         .social-link:hover {
-            background: rgba(232, 102, 10, 0.15);
-            border-color: rgba(232, 102, 10, 0.3);
+            border-color: var(--orange);
             color: var(--orange);
         }
 
         .social-link svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
         }
 
         .footer-col h4 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -915,13 +603,6 @@
             transform: translateY(0);
         }
 
-        .reveal-children > *:nth-child(1) { transition-delay: 0s; }
-        .reveal-children > *:nth-child(2) { transition-delay: 0.08s; }
-        .reveal-children > *:nth-child(3) { transition-delay: 0.16s; }
-        .reveal-children > *:nth-child(4) { transition-delay: 0.24s; }
-        .reveal-children > *:nth-child(5) { transition-delay: 0.32s; }
-        .reveal-children > *:nth-child(6) { transition-delay: 0.40s; }
-
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1060px) {
             .footer-grid {
@@ -956,81 +637,32 @@
             }
 
             .page-hero h1 {
-                font-size: 30px;
+                font-size: 28px;
             }
 
             .page-hero .subtitle {
                 font-size: 14px;
             }
 
-            .content-card {
-                padding: 24px 20px;
+            .verify-card {
+                padding: 32px 20px;
+                margin: 0 16px 60px;
                 border-radius: 14px;
-                margin: 0 16px 40px;
             }
 
-            .doc-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
+            .verify-card h2 {
+                font-size: 19px;
             }
 
-            .doc-card {
-                text-align: left;
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                padding: 18px 16px;
+            .verify-card .verify-text {
+                font-size: 14px;
             }
 
-            .doc-card-icon {
-                margin: 0;
-                width: 46px;
-                height: 46px;
-                min-width: 46px;
-                border-radius: 12px;
-            }
-
-            .doc-card h4 {
-                margin-bottom: 4px;
-            }
-
-            .verify-option-body {
-                padding-left: 0;
-            }
-
-            .timeline {
-                flex-direction: column;
-                gap: 0;
-                align-items: stretch;
-            }
-
-            .timeline-step {
-                flex-direction: row;
-                gap: 16px;
-                padding: 0 0 0 8px;
-            }
-
-            .timeline-step-text {
-                text-align: left;
-            }
-
-            .timeline-connector {
-                width: 2px;
-                height: 32px;
-                margin: 0 0 0 28px;
-                flex-shrink: 0;
-            }
-
-            .timeline-connector::after {
-                right: auto;
-                bottom: -3px;
-                top: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                border-left: 4px solid transparent;
-                border-right: 4px solid transparent;
-                border-top: 6px solid var(--orange-border);
-                border-bottom: none;
+            .sumsub-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 28px;
+                font-size: 15px;
             }
 
             .cta-section {
@@ -1063,16 +695,7 @@
             }
 
             .page-hero h1 {
-                font-size: 26px;
-            }
-
-            .section-title {
-                font-size: 17px;
-            }
-
-            .email-highlight {
-                font-size: 12px;
-                padding: 5px 10px;
+                font-size: 24px;
             }
         }
     </style>
@@ -1156,236 +779,34 @@
     <section class="page-hero">
         <div class="hero-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path d="M6 20c0-2 2-4 6-4s6 2 6 4"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
             </svg>
             KYC
         </div>
         <h1>Верификация личности</h1>
-        <p class="subtitle">Процедура идентификации для обеспечения безопасности обменов</p>
+        <p class="subtitle">Подтверждение личности для безопасного проведения обмена</p>
     </section>
 
-    <!-- MAIN CONTENT CARD -->
-    <div class="content-card">
-
-        <!-- Когда требуется верификация? -->
-        <div class="section-title">
+    <!-- VERIFICATION CARD -->
+    <div class="verify-card">
+        <div class="verify-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 16v-4"/>
-                <path d="M12 8h.01"/>
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
             </svg>
-            Когда требуется верификация?
         </div>
-
-        <ul class="req-list reveal">
-            <li>
-                <span class="req-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                </span>
-                При обмене на сумму свыше 100 000 &#8381;
-            </li>
-            <li>
-                <span class="req-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                </span>
-                При подозрительной активности на аккаунте
-            </li>
-            <li>
-                <span class="req-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                </span>
-                По требованию AML-политики сервиса
-            </li>
-        </ul>
-
-        <div class="section-divider"></div>
-
-        <!-- Необходимые документы -->
-        <div class="section-title">
+        <h2>Верификация через SumSub</h2>
+        <p class="verify-text">Для прохождения верификации личности мы используем сервис <strong>SumSub</strong> — международную платформу для идентификации пользователей. Процесс занимает несколько минут и проходит полностью на стороне SumSub.</p>
+        <a href="https://sumsub.com" target="_blank" rel="noopener noreferrer" class="sumsub-btn">
+            Пройти верификацию
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10 9 9 9 8 9"/>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
             </svg>
-            Необходимые документы
-        </div>
-
-        <div class="doc-grid reveal reveal-children">
-            <!-- Card 1: Паспорт -->
-            <div class="doc-card">
-                <div class="doc-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                        <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        <path d="M6 20c0-2 2-4 6-4s6 2 6 4"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4>Паспорт / удостоверение личности</h4>
-                    <p>Фото разворота с данными</p>
-                </div>
-            </div>
-
-            <!-- Card 2: Подтверждение адреса -->
-            <div class="doc-card">
-                <div class="doc-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4>Подтверждение адреса</h4>
-                    <p>Квитанция ЖКХ или выписка из банка (не старше 3 месяцев)</p>
-                </div>
-            </div>
-
-            <!-- Card 3: Источник средств -->
-            <div class="doc-card">
-                <div class="doc-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4>Источник средств</h4>
-                    <p>Документ, подтверждающий происхождение средств</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Способы прохождения -->
-        <div class="section-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-            Способы прохождения
-        </div>
-
-        <div class="reveal">
-            <!-- Option 1: SumSub -->
-            <div class="verify-option">
-                <div class="verify-option-header">
-                    <div class="verify-option-num">1</div>
-                    <div class="verify-option-title">Онлайн-верификация через SumSub</div>
-                </div>
-                <div class="verify-option-body">
-                    <p>Быстрый и удобный способ прохождения KYC. Загрузите документы через защищённую платформу SumSub, проверка занимает от нескольких минут до 24 часов.</p>
-                    <button class="verify-btn" onclick="alert('Перенаправление на SumSub...')">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <polyline points="9 12 11 14 15 10"/>
-                        </svg>
-                        Начать верификацию
-                    </button>
-                </div>
-            </div>
-
-            <!-- Option 2: Email -->
-            <div class="verify-option">
-                <div class="verify-option-header">
-                    <div class="verify-option-num">2</div>
-                    <div class="verify-option-title">Отправка документов на email</div>
-                </div>
-                <div class="verify-option-body">
-                    <p>Отправьте копии документов на email с указанием номера заявки:</p>
-                    <span class="email-highlight">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                        security@kursov24.org
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Процесс верификации (Timeline) -->
-        <div class="section-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-            </svg>
-            Процесс верификации
-        </div>
-
-        <div class="timeline reveal">
-            <div class="timeline-step">
-                <div class="timeline-step-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="timeline-step-text">Подача документов</div>
-                </div>
-            </div>
-
-            <div class="timeline-connector"></div>
-
-            <div class="timeline-step">
-                <div class="timeline-step-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="timeline-step-text">Проверка</div>
-                    <div class="timeline-step-sub">1-24 часа</div>
-                </div>
-            </div>
-
-            <div class="timeline-connector"></div>
-
-            <div class="timeline-step">
-                <div class="timeline-step-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="timeline-step-text">Результат на email</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Info Notes -->
-        <div class="info-notes reveal">
-            <div class="info-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                Все данные обрабатываются в соответствии с политикой конфиденциальности
-            </div>
-            <div class="info-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                </svg>
-                Документы хранятся в зашифрованном виде
-            </div>
-        </div>
-
+        </a>
+        <p class="verify-note">После прохождения верификации результат будет обработан автоматически</p>
     </div>
 
     <!-- CTA SECTION -->
@@ -1480,10 +901,8 @@
     </footer>
 
     <script>
-        // ========== HEADER SHADOW ON SCROLL ==========
         (function() {
             var header = document.getElementById('header');
-
             window.addEventListener('scroll', function() {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 if (currentScroll > 10) {
@@ -1494,7 +913,6 @@
             }, { passive: true });
         })();
 
-        // ========== BURGER MENU ==========
         (function() {
             var burger = document.getElementById('burgerBtn');
             var mobileMenu = document.getElementById('mobileMenu');
@@ -1518,7 +936,6 @@
             });
         })();
 
-        // ========== LANG SWITCH ==========
         (function() {
             var langBtns = document.querySelectorAll('.lang-btn');
             langBtns.forEach(function(btn) {
@@ -1529,7 +946,6 @@
             });
         })();
 
-        // ========== INTERSECTION OBSERVER REVEAL ==========
         (function() {
             var reveals = document.querySelectorAll('.reveal');
             if (!reveals.length) return;
