@@ -1239,17 +1239,9 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     Мои заявки
                 </button>
-                <button class="sidebar-nav-btn" data-tab="history">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    История обменов
-                </button>
                 <button class="sidebar-nav-btn" data-tab="referral">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     Реферальная программа
-                </button>
-                <button class="sidebar-nav-btn" data-tab="settings">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                    Настройки
                 </button>
                 <button class="sidebar-nav-btn logout" data-tab="logout">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
@@ -1264,9 +1256,7 @@
             <!-- Mobile tabs -->
             <div class="mobile-tabs">
                 <button class="mobile-tab-btn active" data-tab="orders">Мои заявки</button>
-                <button class="mobile-tab-btn" data-tab="history">История</button>
                 <button class="mobile-tab-btn" data-tab="referral">Рефералы</button>
-                <button class="mobile-tab-btn" data-tab="settings">Настройки</button>
             </div>
 
             <!-- ═══ ORDERS SECTION ═══ -->
@@ -1299,7 +1289,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                             Бонус рефералов
                         </div>
-                        <div class="stat-card-value">1 200 &#8381;</div>
+                        <div class="stat-card-value">48.50 $</div>
                         <div class="stat-card-sub">Реферальная программа</div>
                     </div>
                 </div>
@@ -1342,17 +1332,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ═══ HISTORY SECTION ═══ -->
-            <div class="dash-section" id="section-history">
-
-                <div class="dash-welcome">
-                    <h1>История обменов</h1>
-                    <p>Все завершённые операции по вашему аккаунту</p>
+                <div class="dash-section-head reveal" style="margin-top: 32px;">
+                    <h2>История обменов</h2>
                 </div>
 
-                <div class="history-table-wrap">
+                <div class="history-table-wrap reveal">
                     <table class="history-table">
                         <thead>
                             <tr>
@@ -1403,8 +1388,7 @@
                     </table>
                 </div>
 
-                <!-- Mobile card layout for history -->
-                <div class="mobile-history-cards">
+                <div class="mobile-history-cards reveal">
                     <div class="mobile-order-card">
                         <div class="mobile-order-row"><span class="mobile-order-label">ID</span><span class="mobile-order-value">#KRS-2847188</span></div>
                         <div class="mobile-order-row"><span class="mobile-order-label">Дата</span><span class="mobile-order-value">12.10.2026</span></div>
@@ -1442,17 +1426,6 @@
                     </div>
                 </div>
 
-                <div class="pagination">
-                    <button class="page-btn" aria-label="Предыдущая">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-                    </button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn" aria-label="Следующая">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                </div>
             </div>
 
             <!-- ═══ REFERRAL SECTION ═══ -->
@@ -1484,8 +1457,8 @@
                                 <div class="ref-stat-value">3 человека</div>
                             </div>
                             <div class="ref-stat">
-                                <div class="ref-stat-label">Заработано</div>
-                                <div class="ref-stat-value">1 200 &#8381;</div>
+                                <div class="ref-stat-label">Баланс</div>
+                                <div class="ref-stat-value">48.50 $</div>
                             </div>
                         </div>
 
@@ -1494,57 +1467,86 @@
                             <p>Пригласите друзей и получайте бонусы за каждый их обмен. Чем больше друзей &mdash; тем больше бонусов!</p>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- ═══ SETTINGS SECTION ═══ -->
-            <div class="dash-section" id="section-settings">
+                    <!-- Форма вывода -->
+                    <div class="ref-card" style="margin-top: 20px;">
+                        <div class="ref-card-head">
+                            <h3>Вывод средств</h3>
+                            <p>Выведите заработанные бонусы на криптокошелёк</p>
+                        </div>
 
-                <div class="dash-welcome">
-                    <h1>Настройки</h1>
-                    <p>Управление аккаунтом и безопасностью</p>
-                </div>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div>
+                                <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px;">Сеть</label>
+                                <select style="width: 100%; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml,%3Csvg width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 1.5L6 6.5L11 1.5%27 stroke=%27%238E8E93%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 16px center;">
+                                    <option value="trc20">USDT TRC-20</option>
+                                    <option value="erc20">USDT ERC-20</option>
+                                    <option value="btc">BTC</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px;">Адрес кошелька</label>
+                                <input type="text" placeholder="Введите адрес кошелька" style="width: 100%; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);">
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px;">Сумма (USD)</label>
+                                <input type="text" placeholder="0.00" style="width: 100%; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);">
+                                <p style="font-size: 12px; color: var(--text-3); margin-top: 6px;">Доступно: 48.50 $. Минимальная сумма вывода: 10 $</p>
+                            </div>
+                            <button style="width: 100%; padding: 14px 24px; background: var(--orange); color: var(--white); border: none; border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.background='var(--orange-hover)'" onmouseout="this.style.background='var(--orange)'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                                Вывести
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="settings-card">
-                    <h3>Личные данные</h3>
-                    <div class="settings-row">
-                        <div class="settings-row-info">
-                            <h4>Имя</h4>
-                            <p>Иван Иванов</p>
+                    <!-- История выводов -->
+                    <div class="ref-card" style="margin-top: 20px;">
+                        <div class="ref-card-head">
+                            <h3>История выводов</h3>
                         </div>
-                        <button class="settings-btn">Изменить</button>
-                    </div>
-                    <div class="settings-row">
-                        <div class="settings-row-info">
-                            <h4>Email</h4>
-                            <p>ivan@example.com</p>
-                        </div>
-                        <button class="settings-btn">Изменить</button>
-                    </div>
-                    <div class="settings-row">
-                        <div class="settings-row-info">
-                            <h4>Телефон</h4>
-                            <p>Не указан</p>
-                        </div>
-                        <button class="settings-btn">Добавить</button>
-                    </div>
-                </div>
 
-                <div class="settings-card">
-                    <h3>Безопасность</h3>
-                    <div class="settings-row">
-                        <div class="settings-row-info">
-                            <h4>Пароль</h4>
-                            <p>Последнее изменение: 15.08.2026</p>
+                        <div class="history-table-wrap">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Дата</th>
+                                        <th>Сумма</th>
+                                        <th>Адрес</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10.10.2026</td>
+                                        <td class="td-amount">25.00 $</td>
+                                        <td style="font-family: 'SF Mono', 'Consolas', monospace; font-size: 12px;">TKVEu...AQoK</td>
+                                        <td><span class="badge badge-green">Выполнен</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>28.09.2026</td>
+                                        <td class="td-amount">15.00 $</td>
+                                        <td style="font-family: 'SF Mono', 'Consolas', monospace; font-size: 12px;">TKVEu...AQoK</td>
+                                        <td><span class="badge badge-green">Выполнен</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <button class="settings-btn">Сменить пароль</button>
-                    </div>
-                    <div class="settings-row">
-                        <div class="settings-row-info">
-                            <h4>Двухфакторная аутентификация</h4>
-                            <p>Не подключена</p>
+
+                        <div class="mobile-history-cards">
+                            <div class="mobile-order-card">
+                                <div class="mobile-order-row"><span class="mobile-order-label">Дата</span><span class="mobile-order-value">10.10.2026</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Сумма</span><span class="mobile-order-value">25.00 $</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Адрес</span><span class="mobile-order-value" style="font-family: monospace; font-size: 12px;">TKVEu...AQoK</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Статус</span><span class="mobile-order-value"><span class="badge badge-green">Выполнен</span></span></div>
+                            </div>
+                            <div class="mobile-order-card">
+                                <div class="mobile-order-row"><span class="mobile-order-label">Дата</span><span class="mobile-order-value">28.09.2026</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Сумма</span><span class="mobile-order-value">15.00 $</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Адрес</span><span class="mobile-order-value" style="font-family: monospace; font-size: 12px;">TKVEu...AQoK</span></div>
+                                <div class="mobile-order-row"><span class="mobile-order-label">Статус</span><span class="mobile-order-value"><span class="badge badge-green">Выполнен</span></span></div>
+                            </div>
                         </div>
-                        <button class="settings-btn">Включить</button>
                     </div>
                 </div>
             </div>
