@@ -122,8 +122,7 @@
 @media (max-width: 1060px) {
     .wrap,
     .header-inner,
-    .footer-inner,
-    .notice-inner {
+    .footer-inner {
         padding-left: 32px;
         padding-right: 32px;
     }
@@ -161,8 +160,7 @@
     /* Layout containers */
     .wrap,
     .header-inner,
-    .footer-inner,
-    .notice-inner {
+    .footer-inner {
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -257,8 +255,7 @@
     /* Tighter container padding */
     .wrap,
     .header-inner,
-    .footer-inner,
-    .notice-inner {
+    .footer-inner {
         padding-left: 16px;
         padding-right: 16px;
     }

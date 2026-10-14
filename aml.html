@@ -203,35 +203,6 @@
         }
 
         .burger svg { width: 18px; height: 18px; }
-
-        /* ─── SECURITY NOTICE ─── */
-        .notice {
-            background: var(--orange-bg);
-            border-bottom: 1px solid var(--orange-border);
-            margin-top: 64px;
-        }
-
-        .notice-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px 48px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12.5px;
-            font-weight: 500;
-            color: var(--text-2);
-        }
-
-        .notice-inner svg {
-            width: 14px;
-            height: 14px;
-            color: var(--orange);
-            flex-shrink: 0;
-        }
-
-        .notice-inner b { font-weight: 700; color: var(--text); }
-
         /* ─── ANIMATIONS ─── */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -272,6 +243,7 @@
 
         /* ─── PAGE HERO ─── */
         .page-hero {
+            margin-top: 64px;
             padding: 72px 0 56px;
             text-align: center;
             animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -658,7 +630,7 @@
         }
 
         @media (max-width: 680px) {
-            .wrap, .header-inner, .footer-inner, .notice-inner { padding-left: 20px; padding-right: 20px; }
+            .wrap, .header-inner, .footer-inner { padding-left: 20px; padding-right: 20px; }
             .nav { display: none; }
             .header-right { display: none; }
             .burger { display: grid; }
@@ -717,15 +689,6 @@
             </button>
         </div>
     </header>
-
-    <!-- SECURITY NOTICE -->
-    <div class="notice">
-        <div class="notice-inner">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Наш сайт работает только по адресу <b>kursov24.org</b> &mdash; мы не предоставляем реквизиты вне нашего сайта.
-        </div>
-    </div>
-
     <!-- PAGE HERO -->
     <section class="page-hero">
         <div class="wrap">
