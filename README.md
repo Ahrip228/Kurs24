@@ -38,5 +38,4 @@
 ### Дополнительно
 - [Блог](https://ahrip228.github.io/Kurs24/blog.html)
 - [Статья](https://ahrip228.github.io/Kurs24/blog-article.html)
-- [Конвертер](https://ahrip228.github.io/Kurs24/convert.html)
 - [Личный кабинет](https://ahrip228.github.io/Kurs24/dashboard.html)

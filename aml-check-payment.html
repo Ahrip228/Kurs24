@@ -1095,71 +1095,36 @@
                     <div class="price-note">Tether (TRC-20)</div>
                 </div>
 
-                <!-- Payment Methods -->
+                <!-- Payment: Crypto Only -->
                 <div class="pay-methods">
                     <div class="pay-methods-label">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                        Способ оплаты
+                        Оплата криптовалютой
                     </div>
 
-                    <div class="method-tabs">
-                        <button class="method-tab active" data-method="crypto">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            Криптовалюта
-                        </button>
-                        <button class="method-tab" data-method="card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                            Банковская карта
-                        </button>
-                    </div>
-
-                    <!-- Crypto Method -->
-                    <div class="method-content active" id="method-crypto">
-                        <div class="crypto-info">
-                            <div class="crypto-network">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                USDT TRC-20
-                            </div>
-
-                            <div class="crypto-amount-row">
-                                <span class="crypto-amount-label">Сумма к оплате</span>
-                                <span class="crypto-amount-value">3 USDT</span>
-                            </div>
-
-                            <div class="crypto-address-label">Адрес для перевода</div>
-                            <div class="crypto-address-box">
-                                <span class="crypto-address-text" id="crypto-address">TKVEuWxbSBFMh7xbNFZ2EP5sL2FNqQAQoK</span>
-                                <button class="copy-btn" id="copy-addr-btn" aria-label="Скопировать адрес" data-copy="TKVEuWxbSBFMh7xbNFZ2EP5sL2FNqQAQoK">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                    <span class="copy-tooltip" id="copy-tooltip-addr">Скопировано!</span>
-                                </button>
-                            </div>
-
-                            <div class="crypto-note">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                                Отправьте точную сумму 3 USDT только в сети TRC-20. Перевод в другой сети может привести к потере средств.
-                            </div>
+                    <div class="crypto-info">
+                        <div class="crypto-network">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            USDT TRC-20
                         </div>
-                    </div>
 
-                    <!-- Card Method -->
-                    <div class="method-content" id="method-card">
-                        <div class="card-info">
-                            <div class="card-info-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                            </div>
-                            <h3>Оплата через платёжную систему</h3>
-                            <p>После нажатия кнопки "Оплатить" вы будете перенаправлены на страницу безопасной оплаты через платёжную систему.</p>
-                            <div class="card-badges">
-                                <span class="card-badge">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                    SSL
-                                </span>
-                                <span class="card-badge">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                                    Visa / MasterCard
-                                </span>
-                            </div>
+                        <div class="crypto-amount-row">
+                            <span class="crypto-amount-label">Сумма к оплате</span>
+                            <span class="crypto-amount-value">3 USDT</span>
+                        </div>
+
+                        <div class="crypto-address-label">Адрес для перевода</div>
+                        <div class="crypto-address-box">
+                            <span class="crypto-address-text" id="crypto-address">TKVEuWxbSBFMh7xbNFZ2EP5sL2FNqQAQoK</span>
+                            <button class="copy-btn" id="copy-addr-btn" aria-label="Скопировать адрес" data-copy="TKVEuWxbSBFMh7xbNFZ2EP5sL2FNqQAQoK">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span class="copy-tooltip" id="copy-tooltip-addr">Скопировано!</span>
+                            </button>
+                        </div>
+
+                        <div class="crypto-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            Отправьте точную сумму 3 USDT только в сети TRC-20. Перевод в другой сети может привести к потере средств.
                         </div>
                     </div>
                 </div>
@@ -1250,25 +1215,6 @@
 
     <script>
     (function() {
-        // ─── PAYMENT METHOD TOGGLE ───
-        var methodTabs = document.querySelectorAll('.method-tab');
-        var methodContents = document.querySelectorAll('.method-content');
-
-        methodTabs.forEach(function(tab) {
-            tab.addEventListener('click', function() {
-                var method = tab.getAttribute('data-method');
-
-                // Update tabs
-                methodTabs.forEach(function(t) { t.classList.remove('active'); });
-                tab.classList.add('active');
-
-                // Update content
-                methodContents.forEach(function(c) { c.classList.remove('active'); });
-                var target = document.getElementById('method-' + method);
-                if (target) target.classList.add('active');
-            });
-        });
-
         // ─── COPY TO CLIPBOARD ───
         var copyBtns = document.querySelectorAll('.copy-btn');
 
