@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — Kursov24 | Вопросы и ответы</title>
+    <meta name="description" content="Ответы на часто задаваемые вопросы о работе сервиса обмена криптовалют Kursov24. Как совершить обмен, отменить заказ, проверить статус и многое другое.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #E8660A;
+            --orange-hover: #D55A06;
+            --orange-bg: #FEF6EE;
+            --orange-border: #FDDCB5;
+            --dark: #111111;
+            --text: #1A1A1A;
+            --text-2: #525259;
+            --text-3: #8E8E93;
+            --text-inv: #F5F5F7;
+            --text-inv-2: #AEAEB2;
+            --bg: #F8F7F4;
+            --white: #FFFFFF;
+            --border: #E8E6E1;
+            --border-2: #D6D4CE;
+            --radius: 12px;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: rgba(232, 102, 10, 0.15);
+            color: var(--text);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        :focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(248, 247, 244, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 21px;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            display: flex;
+            align-items: baseline;
+            flex-shrink: 0;
+        }
+
+        .logo em { font-style: normal; color: var(--orange); }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+        }
+
+        .nav a {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-2);
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: color 0.25s, background 0.25s;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            border-radius: 1px;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav a:hover::after { width: 60%; left: 20%; }
+
+        .nav a:hover {
+            color: var(--text);
+            background: rgba(0,0,0,0.04);
+        }
+
+        .nav a.active {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .nav a.active::after {
+            width: 60%;
+            left: 20%;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .lang-btn {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 10px;
+            color: var(--text-3);
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .lang-btn:not(.active):hover { color: var(--text); }
+
+        .hdr-icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            display: grid;
+            place-items: center;
+            color: var(--text-3);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hdr-icon-btn:hover { border-color: var(--border-2); color: var(--text); }
+        .hdr-icon-btn svg { width: 16px; height: 16px; }
+
+        .burger {
+            display: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            place-items: center;
+            color: var(--text);
+        }
+
+        .burger svg { width: 18px; height: 18px; }
+
+        /* ─── SECURITY NOTICE ─── */
+        .notice {
+            background: var(--orange-bg);
+            border-bottom: 1px solid var(--orange-border);
+            margin-top: 64px;
+        }
+
+        .notice-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 48px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-2);
+        }
+
+        .notice-inner svg {
+            width: 14px;
+            height: 14px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .notice-inner b { font-weight: 700; color: var(--text); }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(16px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children */
+        .reveal-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-children.visible > * { opacity: 1; transform: translateY(0); }
+        .reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
+        .reveal-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
+        .reveal-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
+        .reveal-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
+        .reveal-children.visible > *:nth-child(6) { transition-delay: 0.4s; }
+        .reveal-children.visible > *:nth-child(7) { transition-delay: 0.48s; }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            padding: 72px 0 56px;
+            text-align: center;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .page-hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+
+        .page-hero p {
+            font-size: 16px;
+            color: var(--text-3);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ─── FAQ SECTION ─── */
+        .faq-section {
+            padding: 0 0 80px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: box-shadow 0.35s, border-color 0.35s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .faq-item.open {
+            border-color: var(--orange-border);
+        }
+
+        .faq-q {
+            width: 100%;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            transition: color 0.2s;
+        }
+
+        .faq-q:hover { color: var(--orange); }
+
+        .faq-chevron {
+            width: 18px;
+            height: 18px;
+            color: var(--text-3);
+            flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+        }
+
+        .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--orange); }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-item.open .faq-a { max-height: 300px; }
+
+        .faq-a-inner {
+            padding: 0 22px 20px;
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        /* ─── SUPPORT CTA ─── */
+        .support-section {
+            padding: 0 0 80px;
+        }
+
+        .support-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D1B0E 50%, #1A1A1A 100%);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .support-inner h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #F5F5F7;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .support-inner p {
+            font-size: 14px;
+            color: #8E8E93;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .support-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-support-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--orange);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-support-email:hover {
+            background: var(--orange-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-support-email svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-support-chat {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #F5F5F7;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: background 0.2s, transform 0.2s, border-color 0.2s;
+        }
+
+        .btn-support-chat:hover {
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+
+        .btn-support-chat svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--dark);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 48px 32px;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 48px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .logo { color: var(--text-inv); margin-bottom: 8px; }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: #636366;
+            line-height: 1.5;
+        }
+
+        .footer-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 12.5px;
+            color: #636366;
+            transition: color 0.2s;
+        }
+
+        .footer-email:hover { color: var(--text-inv-2); }
+        .footer-email svg { width: 13px; height: 13px; }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #48484A;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 13px;
+            color: #636366;
+            font-weight: 500;
+            padding: 3px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--text-inv-2); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+
+        .footer-copy { font-size: 11.5px; color: #3A3A3C; }
+
+        .footer-socials { display: flex; gap: 4px; }
+
+        .soc-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            color: #48484A;
+            transition: color 0.2s;
+        }
+
+        .soc-btn:hover { color: #636366; }
+        .soc-btn svg { width: 14px; height: 14px; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1060px) {
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-links { gap: 32px; }
+        }
+
+        @media (max-width: 680px) {
+            .wrap, .header-inner, .footer-inner, .notice-inner { padding-left: 20px; padding-right: 20px; }
+            .nav { display: none; }
+            .header-right { display: none; }
+            .burger { display: grid; }
+            .page-hero { padding: 56px 0 40px; }
+            .page-hero h1 { font-size: 30px; letter-spacing: -1px; }
+            .page-hero p { font-size: 14px; }
+            .faq-section { padding: 0 0 56px; }
+            .faq-q { font-size: 14px; padding: 16px 18px; }
+            .faq-a-inner { padding: 0 18px 16px; font-size: 13px; }
+            .support-inner { padding: 32px 24px; border-radius: 16px; }
+            .support-inner h2 { font-size: 21px; }
+            .support-actions { flex-direction: column; }
+            .btn-support-email, .btn-support-chat { width: 100%; justify-content: center; }
+            .footer-top { flex-direction: column; gap: 24px; }
+            .footer-links { flex-direction: column; gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="hdr">
+        <div class="header-inner">
+            <a href="index.html" class="logo">Kursov<em>24</em></a>
+
+            <nav class="nav">
+                <a href="about.html">О нас</a>
+                <a href="rules.html">Правила</a>
+                <a href="aml.html">AML-проверка</a>
+                <a href="partners.html">Партнеры</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="news.html">Новости</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active">RU</button>
+                    <button class="lang-btn">EN</button>
+                </div>
+                <button class="hdr-icon-btn" aria-label="Аккаунт">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+                <button class="hdr-icon-btn" aria-label="Тема">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+
+            <button class="burger" aria-label="Меню">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- SECURITY NOTICE -->
+    <div class="notice">
+        <div class="notice-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Наш сайт работает только по адресу <b>kursov24.org</b> &mdash; мы не предоставляем реквизиты вне нашего сайта.
+        </div>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="wrap">
+            <h1>Вопросы и ответы</h1>
+            <p>Ответы на часто задаваемые вопросы о работе сервиса Kursov24</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section reveal">
+        <div class="wrap">
+            <div class="faq-list reveal-children">
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Как совершить обмен?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Выберите валюту, которую отдаёте и получаете, укажите сумму, нажмите &laquo;Начать обмен&raquo;, заполните необходимые данные, оплатите по инструкциям на сайте, подтвердите оплату и подождите 5-15 минут для обработки.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Заказ в статусе &laquo;Выполнен&raquo;, но средства не поступили?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Возможны два варианта: задержка платёжной системы (средства поступят в ближайшее время) или указаны неверные реквизиты получателя (средства могли уйти по другому адресу). Свяжитесь с поддержкой для уточнения.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Могу ли я отменить заказ после оплаты?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Возможно, если связаться с поддержкой незамедлительно; возврат включает комиссии. Отмена невозможна, если статус &laquo;Выполнен&raquo; и средства уже отправлены.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Почему мой заказ в статусе &laquo;Удалён&raquo; / &laquo;Ошибочный&raquo;?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Свяжитесь с поддержкой незамедлительно для быстрого решения вопроса.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Как проверить статус заказа?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Просмотрите статус в личном кабинете в разделе &laquo;Мои заказы&raquo; или проверьте email, указанный при создании заказа.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Что такое реферальная программа?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Найдите свою реферальную ссылку в разделе &laquo;Реферальная программа&raquo; в личном кабинете. Там же можно просмотреть статистику переходов и запросить вывод реферальных выплат.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        Почему мой заказ был пересчитан?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Обменные курсы фиксируются при подтверждении платформой. Волатильность криптовалют и более медленная обработка протокола вызывают колебания курса между подачей заявки и завершением, что приводит к пересчёту.</div></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT CTA -->
+    <section class="support-section reveal">
+        <div class="wrap">
+            <div class="support-inner">
+                <h2>Не нашли ответ?</h2>
+                <p>Свяжитесь с нашей службой поддержки &mdash; мы работаем 24/7 и поможем решить любой вопрос.</p>
+                <div class="support-actions">
+                    <a href="mailto:support@kursov24.org" class="btn-support-email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        support@kursov24.org
+                    </a>
+                    <button class="btn-support-chat" onclick="alert('Чат поддержки откроется здесь')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Открыть чат
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">Kursov<em>24</em></div>
+                    <p>Обмен криптовалют с 2021 года.</p>
+                    <a href="mailto:support@kursov24.org" class="footer-email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        support@kursov24.org
+                    </a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Сервис</h4>
+                        <a href="about.html">О нас</a>
+                        <a href="rules.html">Правила</a>
+                        <a href="partners.html">Партнеры</a>
+                        <a href="contacts.html">Контакты</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Помощь</h4>
+                        <a href="faq.html">FAQ</a>
+                        <a href="index.html">Как обменять</a>
+                        <a href="contacts.html">Техподдержка</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Мониторинги</h4>
+                        <a href="#">Bestchange</a>
+                        <a href="#">BitsMedia</a>
+                        <a href="#">ExNode</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span class="footer-copy">&copy; 2021 Kursov24</span>
+                <div class="footer-socials">
+                    <a href="#" class="soc-btn" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="#" class="soc-btn" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:support@kursov24.org" class="soc-btn" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        // ─── SCROLL REVEAL (IntersectionObserver) ───
+        var revealEls = document.querySelectorAll('.reveal, .reveal-children');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+
+        // ─── HEADER shadow on scroll ───
+        var hdr = document.getElementById('hdr');
+        window.addEventListener('scroll', function() {
+            hdr.style.boxShadow = window.scrollY > 8 ? '0 1px 8px rgba(0,0,0,0.06)' : 'none';
+        }, { passive: true });
+
+        // ─── LANGUAGE SWITCH ───
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+            });
+        });
+
+        // ─── FAQ accordion ───
+        document.querySelectorAll('.faq-q').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = btn.parentElement;
+                var wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursov24 — Верификация личности | KYC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #E8660A;
+            --orange-hover: #D55A06;
+            --orange-bg: #FEF6EE;
+            --orange-border: #FDDCB5;
+            --dark: #111111;
+            --text: #1A1A1A;
+            --text-2: #525259;
+            --text-3: #8E8E93;
+            --text-inv: #F5F5F7;
+            --text-inv-2: #AEAEB2;
+            --bg: #F8F7F4;
+            --white: #FFFFFF;
+            --border: #E8E6E1;
+            --border-2: #D6D4CE;
+            --radius: 12px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            z-index: 50;
+            background: rgba(248, 247, 244, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            border-bottom-color: var(--border);
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+        }
+
+        .logo em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-2);
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            color: var(--orange);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 36px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 0 10px;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-2);
+        }
+
+        .icon-btn:hover {
+            border-color: var(--border-2);
+            color: var(--text);
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .burger {
+            display: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0;
+        }
+
+        .burger span {
+            display: block;
+            width: 16px;
+            height: 2px;
+            background: var(--text-2);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== MOBILE MENU ========== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 247, 244, 0.98);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 49;
+            padding: 24px 20px;
+            flex-direction: column;
+            gap: 4px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text);
+            border-radius: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--white);
+        }
+
+        /* ========== SECURITY NOTICE ========== */
+        .security-notice {
+            margin-top: 64px;
+            background: var(--orange-bg);
+            border-bottom: 1px solid var(--orange-border);
+            padding: 12px 40px;
+        }
+
+        .security-notice-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+
+        .security-notice-inner svg {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+        }
+
+        .security-notice-inner strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            text-align: center;
+            padding: 56px 40px 40px;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .page-hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .page-hero .subtitle {
+            font-size: 17px;
+            color: var(--text-2);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ========== MAIN CONTENT CARD ========== */
+        .content-card {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+            opacity: 0;
+        }
+
+        /* ========== SECTION TITLES ========== */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title svg {
+            width: 22px;
+            height: 22px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 32px 0;
+        }
+
+        /* ========== REQUIREMENTS LIST ========== */
+        .req-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .req-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.5;
+            transition: border-color 0.2s ease;
+        }
+
+        .req-list li:hover {
+            border-color: var(--orange-border);
+        }
+
+        .req-list li .req-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .req-list li .req-icon svg {
+            width: 12px;
+            height: 12px;
+            color: var(--orange);
+        }
+
+        /* ========== DOCUMENT CARDS ========== */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .doc-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--orange-border);
+        }
+
+        .doc-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .doc-card-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--orange);
+        }
+
+        .doc-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .doc-card p {
+            font-size: 13px;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        /* ========== VERIFICATION OPTIONS ========== */
+        .verify-option {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .verify-option:hover {
+            border-color: var(--orange-border);
+        }
+
+        .verify-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .verify-option-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .verify-option-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .verify-option-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .verify-option-body {
+            padding-left: 46px;
+        }
+
+        .verify-option-body p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .verify-option-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .verify-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 46px;
+            padding: 0 28px;
+            border-radius: var(--radius);
+            background: var(--orange);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verify-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .verify-btn:hover::before {
+            opacity: 1;
+        }
+
+        .verify-btn:hover {
+            background: var(--orange-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(232, 102, 10, 0.35);
+        }
+
+        .verify-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(232, 102, 10, 0.25);
+        }
+
+        .verify-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .email-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--orange);
+            font-family: 'Inter', monospace;
+        }
+
+        .email-highlight svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========== TIMELINE / PROCESS ========== */
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 8px 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            position: relative;
+        }
+
+        .timeline-step-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--orange-bg);
+            border: 2px solid var(--orange-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-step-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--orange);
+        }
+
+        .timeline-step-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .timeline-step-sub {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-3);
+        }
+
+        .timeline-connector {
+            width: 60px;
+            height: 2px;
+            background: var(--orange-border);
+            position: relative;
+            margin-bottom: 30px;
+            flex-shrink: 0;
+        }
+
+        .timeline-connector::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid var(--orange-border);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
+        /* ========== INFO NOTES ========== */
+        .info-notes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px 16px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            border-radius: var(--radius);
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+
+        .info-note svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 40%, #252525 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(232, 102, 10, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(232, 102, 10, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(232, 102, 10, 0.12);
+            border: 1px solid rgba(232, 102, 10, 0.2);
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-inv);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: var(--text-inv-2);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 52px;
+            padding: 0 32px;
+            border-radius: var(--radius);
+            background: var(--orange);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-btn:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(232, 102, 10, 0.35);
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--dark);
+            padding: 64px 40px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo {
+            font-size: 24px;
+            color: var(--text-inv);
+            margin-bottom: 14px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-inv-2);
+            line-height: 1.6;
+            max-width: 280px;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-inv-2);
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(232, 102, 10, 0.15);
+            border-color: rgba(232, 102, 10, 0.3);
+            color: var(--orange);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-inv-2);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--orange);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-children > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-children > *:nth-child(2) { transition-delay: 0.08s; }
+        .reveal-children > *:nth-child(3) { transition-delay: 0.16s; }
+        .reveal-children > *:nth-child(4) { transition-delay: 0.24s; }
+        .reveal-children > *:nth-child(5) { transition-delay: 0.32s; }
+        .reveal-children > *:nth-child(6) { transition-delay: 0.40s; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1060px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .header-inner {
+                padding: 0 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .security-notice {
+                padding: 12px 20px;
+            }
+
+            .security-notice-inner {
+                font-size: 12px;
+            }
+
+            .page-hero {
+                padding: 36px 20px 28px;
+            }
+
+            .page-hero h1 {
+                font-size: 30px;
+            }
+
+            .page-hero .subtitle {
+                font-size: 14px;
+            }
+
+            .content-card {
+                padding: 24px 20px;
+                border-radius: 14px;
+                margin: 0 16px 40px;
+            }
+
+            .doc-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .doc-card {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 18px 16px;
+            }
+
+            .doc-card-icon {
+                margin: 0;
+                width: 46px;
+                height: 46px;
+                min-width: 46px;
+                border-radius: 12px;
+            }
+
+            .doc-card h4 {
+                margin-bottom: 4px;
+            }
+
+            .verify-option-body {
+                padding-left: 0;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+            }
+
+            .timeline-step {
+                flex-direction: row;
+                gap: 16px;
+                padding: 0 0 0 8px;
+            }
+
+            .timeline-step-text {
+                text-align: left;
+            }
+
+            .timeline-connector {
+                width: 2px;
+                height: 32px;
+                margin: 0 0 0 28px;
+                flex-shrink: 0;
+            }
+
+            .timeline-connector::after {
+                right: auto;
+                bottom: -3px;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 6px solid var(--orange-border);
+                border-bottom: none;
+            }
+
+            .cta-section {
+                padding: 56px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .footer {
+                padding: 48px 20px 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .hero-badge {
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+
+            .page-hero h1 {
+                font-size: 26px;
+            }
+
+            .section-title {
+                font-size: 17px;
+            }
+
+            .email-highlight {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">Kursov<em>24</em></a>
+
+            <nav class="nav">
+                <a href="about.html">О нас</a>
+                <a href="rules.html">Правила</a>
+                <a href="aml.html">AML-проверка</a>
+                <a href="partners.html">Партнеры</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="news.html">Новости</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+
+                <button class="icon-btn" aria-label="Аккаунт" title="Аккаунт">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+
+                <button class="icon-btn" id="themeToggle" aria-label="Тема" title="Сменить тему">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
+
+                <button class="burger" id="burgerBtn" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="about.html">О нас</a>
+        <a href="rules.html">Правила</a>
+        <a href="aml.html">AML-проверка</a>
+        <a href="partners.html">Партнеры</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="news.html">Новости</a>
+    </div>
+
+    <!-- SECURITY NOTICE -->
+    <div class="security-notice">
+        <div class="security-notice-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <span>Наш сайт работает только по адресу <strong>kursov24.org</strong> — мы не предоставляем реквизиты вне нашего сайта.</span>
+        </div>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path d="M6 20c0-2 2-4 6-4s6 2 6 4"/>
+            </svg>
+            KYC
+        </div>
+        <h1>Верификация личности</h1>
+        <p class="subtitle">Процедура идентификации для обеспечения безопасности обменов</p>
+    </section>
+
+    <!-- MAIN CONTENT CARD -->
+    <div class="content-card">
+
+        <!-- Когда требуется верификация? -->
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4"/>
+                <path d="M12 8h.01"/>
+            </svg>
+            Когда требуется верификация?
+        </div>
+
+        <ul class="req-list reveal">
+            <li>
+                <span class="req-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </span>
+                При обмене на сумму свыше 100 000 &#8381;
+            </li>
+            <li>
+                <span class="req-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </span>
+                При подозрительной активности на аккаунте
+            </li>
+            <li>
+                <span class="req-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </span>
+                По требованию AML-политики сервиса
+            </li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <!-- Необходимые документы -->
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            Необходимые документы
+        </div>
+
+        <div class="doc-grid reveal reveal-children">
+            <!-- Card 1: Паспорт -->
+            <div class="doc-card">
+                <div class="doc-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path d="M6 20c0-2 2-4 6-4s6 2 6 4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Паспорт / удостоверение личности</h4>
+                    <p>Фото разворота с данными</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Подтверждение адреса -->
+            <div class="doc-card">
+                <div class="doc-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Подтверждение адреса</h4>
+                    <p>Квитанция ЖКХ или выписка из банка (не старше 3 месяцев)</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Источник средств -->
+            <div class="doc-card">
+                <div class="doc-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Источник средств</h4>
+                    <p>Документ, подтверждающий происхождение средств</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Способы прохождения -->
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Способы прохождения
+        </div>
+
+        <div class="reveal">
+            <!-- Option 1: SumSub -->
+            <div class="verify-option">
+                <div class="verify-option-header">
+                    <div class="verify-option-num">1</div>
+                    <div class="verify-option-title">Онлайн-верификация через SumSub</div>
+                </div>
+                <div class="verify-option-body">
+                    <p>Быстрый и удобный способ прохождения KYC. Загрузите документы через защищённую платформу SumSub, проверка занимает от нескольких минут до 24 часов.</p>
+                    <button class="verify-btn" onclick="alert('Перенаправление на SumSub...')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <polyline points="9 12 11 14 15 10"/>
+                        </svg>
+                        Начать верификацию
+                    </button>
+                </div>
+            </div>
+
+            <!-- Option 2: Email -->
+            <div class="verify-option">
+                <div class="verify-option-header">
+                    <div class="verify-option-num">2</div>
+                    <div class="verify-option-title">Отправка документов на email</div>
+                </div>
+                <div class="verify-option-body">
+                    <p>Отправьте копии документов на email с указанием номера заявки:</p>
+                    <span class="email-highlight">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        security@kursov24.org
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Процесс верификации (Timeline) -->
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Процесс верификации
+        </div>
+
+        <div class="timeline reveal">
+            <div class="timeline-step">
+                <div class="timeline-step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="timeline-step-text">Подача документов</div>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-step">
+                <div class="timeline-step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="timeline-step-text">Проверка</div>
+                    <div class="timeline-step-sub">1-24 часа</div>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-step">
+                <div class="timeline-step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="timeline-step-text">Результат на email</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Info Notes -->
+        <div class="info-notes reveal">
+            <div class="info-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Все данные обрабатываются в соответствии с политикой конфиденциальности
+            </div>
+            <div class="info-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                Документы хранятся в зашифрованном виде
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section reveal">
+        <div class="cta-inner">
+            <div class="cta-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                Быстрый обмен
+            </div>
+            <h2>Готовы к обмену?</h2>
+            <p>Выгодный курс, мгновенная обработка и надёжная поддержка — всё для вашего удобства.</p>
+            <a href="index.html" class="cta-btn">
+                Начать обмен
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"/>
+                    <path d="m12 5 7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Kursov<em>24</em></a>
+                    <p>Надёжный сервис обмена криптовалют. Работаем с 2021 года, более 50 000 успешных обменов.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Сервис</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="rules.html">Правила обмена</a></li>
+                        <li><a href="aml.html">AML-проверка</a></li>
+                        <li><a href="partners.html">Партнёрская программа</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="rules.html">Пользовательское соглашение</a></li>
+                        <li><a href="rules.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Мониторинги</h4>
+                    <ul>
+                        <li><a href="#">BestChange</a></li>
+                        <li><a href="#">Kurs.Expert</a></li>
+                        <li><a href="#">ExchangeSumo</a></li>
+                        <li><a href="#">OKchanger</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2021 Kursov24. Все права защищены.</p>
+                <div class="footer-bottom-links">
+                    <a href="rules.html">Правила</a>
+                    <a href="rules.html">Конфиденциальность</a>
+                    <a href="contacts.html">Поддержка</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== HEADER SHADOW ON SCROLL ==========
+        (function() {
+            var header = document.getElementById('header');
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 10) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        })();
+
+        // ========== BURGER MENU ==========
+        (function() {
+            var burger = document.getElementById('burgerBtn');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var isOpen = false;
+
+            burger.addEventListener('click', function() {
+                isOpen = !isOpen;
+                mobileMenu.classList.toggle('open', isOpen);
+                burger.setAttribute('aria-expanded', isOpen);
+
+                var spans = burger.querySelectorAll('span');
+                if (isOpen) {
+                    spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        })();
+
+        // ========== LANG SWITCH ==========
+        (function() {
+            var langBtns = document.querySelectorAll('.lang-btn');
+            langBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    langBtns.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                });
+            });
+        })();
+
+        // ========== INTERSECTION OBSERVER REVEAL ==========
+        (function() {
+            var reveals = document.querySelectorAll('.reveal');
+            if (!reveals.length) return;
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            reveals.forEach(function(el) {
+                observer.observe(el);
+            });
+        })();
+    </script>
+</body>
+</html>

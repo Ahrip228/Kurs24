@@ -1,0 +1,468 @@
+/* ============================================================
+   adaptive.css — Shared Responsive / Adaptive Stylesheet
+   Kursov24 Crypto Exchange
+   ------------------------------------------------------------
+   This file provides common responsive rules, utility classes,
+   and component overrides used across all pages of the site.
+   Link it after the page-specific stylesheet:
+       <link rel="stylesheet" href="adaptive.css">
+   ============================================================ */
+
+
+/* =============================================================
+   1. CSS Custom Properties (Design Tokens)
+   ---------------------------------------------------------
+   Duplicated here so the file is self-contained when linked
+   as the only stylesheet (e.g. in isolated test pages).
+   ============================================================= */
+
+:root {
+    --orange: #E8660A;
+    --orange-hover: #D55A06;
+    --orange-bg: #FEF6EE;
+    --orange-border: #FDDCB5;
+    --dark: #111111;
+    --text: #1A1A1A;
+    --text-2: #525259;
+    --text-3: #8E8E93;
+    --text-inv: #F5F5F7;
+    --text-inv-2: #AEAEB2;
+    --bg: #F8F7F4;
+    --white: #FFFFFF;
+    --border: #E8E6E1;
+    --border-2: #D6D4CE;
+    --radius: 12px;
+}
+
+
+/* =============================================================
+   2. Utility Classes
+   ============================================================= */
+
+/* --- Accessibility ------------------------------------------ */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Text Alignment ----------------------------------------- */
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+/* --- Margin-Top Utilities (0 – 48, step 8) ------------------ */
+
+.mt-0  { margin-top: 0; }
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mt-40 { margin-top: 40px; }
+.mt-48 { margin-top: 48px; }
+
+/* --- Margin-Bottom Utilities (0 – 48, step 8) --------------- */
+
+.mb-0  { margin-bottom: 0; }
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-40 { margin-bottom: 40px; }
+.mb-48 { margin-bottom: 48px; }
+
+/* --- Display Utilities -------------------------------------- */
+
+.d-none  { display: none; }
+.d-block { display: block; }
+.d-flex  { display: flex; }
+.d-grid  { display: grid; }
+
+/* --- Gap Utilities ------------------------------------------ */
+
+.gap-8  { gap: 8px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.gap-32 { gap: 32px; }
+
+/* --- Width / Centering -------------------------------------- */
+
+.w-100   { width: 100%; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+
+/* =============================================================
+   3. Responsive Breakpoints
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   3-A.  ≤ 1200 px — Narrow Desktop
+   ------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+    .wrap,
+    .header-inner,
+    .footer-inner {
+        max-width: 1060px;
+    }
+}
+
+/* -------------------------------------------------------------
+   3-B.  ≤ 1060 px — Tablet
+   ------------------------------------------------------------- */
+
+@media (max-width: 1060px) {
+    .wrap,
+    .header-inner,
+    .footer-inner,
+    .notice-inner {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    /* Grids collapse to fewer columns */
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer */
+    .footer-top {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footer-links {
+        gap: 32px;
+    }
+
+    /* Page hero */
+    .page-hero h1 {
+        font-size: 36px;
+    }
+}
+
+/* -------------------------------------------------------------
+   3-C.  ≤ 680 px — Mobile
+   ------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+    /* Layout containers */
+    .wrap,
+    .header-inner,
+    .footer-inner,
+    .notice-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Header: hide desktop nav, show burger */
+    .nav {
+        display: none;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .burger {
+        display: grid;
+    }
+
+    /* Page hero */
+    .page-hero {
+        padding: 56px 0 40px;
+    }
+
+    .page-hero h1 {
+        font-size: 30px;
+        letter-spacing: -1px;
+    }
+
+    .page-hero p {
+        font-size: 14px;
+    }
+
+    /* Footer */
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* CTA block */
+    .cta-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+    }
+
+    .btn-cta {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Grids go single-column */
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------
+   3-D.  ≤ 440 px — Small Mobile
+   ------------------------------------------------------------- */
+
+@media (max-width: 440px) {
+    /* Even smaller hero headings */
+    .page-hero h1 {
+        font-size: 24px;
+        letter-spacing: -0.5px;
+    }
+
+    .page-hero p {
+        font-size: 13px;
+    }
+
+    /* Section headings */
+    .section-title,
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 17px;
+    }
+
+    /* Tighter container padding */
+    .wrap,
+    .header-inner,
+    .footer-inner,
+    .notice-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* CTA tighter */
+    .cta-inner {
+        padding: 24px 16px;
+    }
+}
+
+
+/* =============================================================
+   4. Common Component Responsive Overrides
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   4-A.  Mobile Menu Overlay
+   ------------------------------------------------------------- */
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--white);
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-menu.is-open {
+    display: flex;
+}
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text);
+}
+
+.mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 4px;
+}
+
+.mobile-menu-nav a {
+    display: block;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: background 0.15s ease;
+}
+
+.mobile-menu-nav a:hover,
+.mobile-menu-nav a:focus-visible {
+    background: var(--bg);
+}
+
+.mobile-menu-actions {
+    padding: 16px 20px;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Prevent body scroll while menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------------
+   4-B.  Card Responsive Padding
+   ------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+    .card,
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-lg,
+    .card-lg .card-body {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 440px) {
+    .card,
+    .card-body {
+        padding: 16px;
+    }
+
+    .card-lg,
+    .card-lg .card-body {
+        padding: 20px;
+    }
+}
+
+/* -------------------------------------------------------------
+   4-C.  Form Field Responsive Sizing
+   ------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .form-field,
+    .form-input,
+    .form-select,
+    .form-textarea {
+        font-size: 16px;           /* prevents iOS zoom on focus */
+    }
+
+    .form-input,
+    .form-select {
+        height: 48px;
+        padding: 0 16px;
+    }
+
+    .form-textarea {
+        padding: 14px 16px;
+    }
+
+    .form-label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 440px) {
+    .form-input,
+    .form-select {
+        height: 44px;
+        padding: 0 12px;
+    }
+
+    .form-textarea {
+        padding: 12px;
+    }
+}
+
+/* -------------------------------------------------------------
+   4-D.  Button Responsive Sizing
+   ------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+    .btn {
+        height: 48px;
+        padding: 0 24px;
+        font-size: 15px;
+    }
+
+    .btn-sm {
+        height: 40px;
+        padding: 0 18px;
+        font-size: 13px;
+    }
+
+    .btn-lg {
+        height: 52px;
+        padding: 0 28px;
+        font-size: 16px;
+    }
+
+    /* Full-width buttons on mobile when flagged */
+    .btn-block-mobile {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 440px) {
+    .btn {
+        height: 44px;
+        padding: 0 20px;
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        height: 36px;
+        padding: 0 14px;
+        font-size: 12px;
+    }
+
+    .btn-lg {
+        height: 48px;
+        padding: 0 24px;
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AML/KYC проверка — Kursov24 | Политика противодействия отмыванию денег</title>
+    <meta name="description" content="Политика AML/KYC проверки Kursov24. Автоматическая верификация транзакций, допустимые пороги риска, процедура KYC и условия возврата средств.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #E8660A;
+            --orange-hover: #D55A06;
+            --orange-bg: #FEF6EE;
+            --orange-border: #FDDCB5;
+            --dark: #111111;
+            --text: #1A1A1A;
+            --text-2: #525259;
+            --text-3: #8E8E93;
+            --text-inv: #F5F5F7;
+            --text-inv-2: #AEAEB2;
+            --bg: #F8F7F4;
+            --white: #FFFFFF;
+            --border: #E8E6E1;
+            --border-2: #D6D4CE;
+            --radius: 12px;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: rgba(232, 102, 10, 0.15);
+            color: var(--text);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+        input { font-family: inherit; border: none; outline: none; background: none; }
+
+        :focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(248, 247, 244, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 21px;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            display: flex;
+            align-items: baseline;
+            flex-shrink: 0;
+        }
+
+        .logo em { font-style: normal; color: var(--orange); }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+        }
+
+        .nav a {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-2);
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: color 0.25s, background 0.25s;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            border-radius: 1px;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav a:hover::after { width: 60%; left: 20%; }
+
+        .nav a:hover {
+            color: var(--text);
+            background: rgba(0,0,0,0.04);
+        }
+
+        .nav a.active {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .nav a.active::after {
+            width: 60%;
+            left: 20%;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .lang-btn {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 10px;
+            color: var(--text-3);
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .lang-btn:not(.active):hover { color: var(--text); }
+
+        .hdr-icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            display: grid;
+            place-items: center;
+            color: var(--text-3);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hdr-icon-btn:hover { border-color: var(--border-2); color: var(--text); }
+        .hdr-icon-btn svg { width: 16px; height: 16px; }
+
+        .burger {
+            display: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            place-items: center;
+            color: var(--text);
+        }
+
+        .burger svg { width: 18px; height: 18px; }
+
+        /* ─── SECURITY NOTICE ─── */
+        .notice {
+            background: var(--orange-bg);
+            border-bottom: 1px solid var(--orange-border);
+            margin-top: 64px;
+        }
+
+        .notice-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 48px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-2);
+        }
+
+        .notice-inner svg {
+            width: 14px;
+            height: 14px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .notice-inner b { font-weight: 700; color: var(--text); }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(16px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children */
+        .reveal-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-children.visible > * { opacity: 1; transform: translateY(0); }
+        .reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
+        .reveal-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
+        .reveal-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
+        .reveal-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
+        .reveal-children.visible > *:nth-child(6) { transition-delay: 0.4s; }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            padding: 72px 0 56px;
+            text-align: center;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            border-radius: 24px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 24px;
+        }
+
+        .page-hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .page-hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .page-hero p {
+            font-size: 16px;
+            color: var(--text-2);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ─── CONTENT SECTIONS ─── */
+        .content-section {
+            padding: 0 0 64px;
+        }
+
+        .content-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 40px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+        }
+
+        .content-card h2 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-card h2 .section-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--orange-bg);
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .content-card h2 .section-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+        }
+
+        .content-card .section-desc {
+            font-size: 14.5px;
+            color: var(--text-2);
+            line-height: 1.65;
+            max-width: 780px;
+        }
+
+        .content-card .section-desc b,
+        .content-card .section-desc strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .highlight-value {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-border);
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 700;
+            color: var(--orange);
+            font-size: 13px;
+        }
+
+        /* ─── TABLE ─── */
+        .risk-table-wrap {
+            margin-top: 20px;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .risk-table thead th {
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .risk-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .risk-table tbody tr:nth-child(even) {
+            background: rgba(248, 247, 244, 0.5);
+        }
+
+        .risk-table tbody tr:hover {
+            background: var(--orange-bg);
+        }
+
+        .risk-table tbody td {
+            padding: 13px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .risk-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .risk-table .cat-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .risk-table .threshold-val {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .risk-table .threshold-val.zero {
+            color: #D63031;
+            background: rgba(214, 48, 49, 0.08);
+            padding: 3px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .risk-table .threshold-val.low {
+            color: var(--orange);
+        }
+
+        .risk-table .threshold-val.high {
+            color: #00B894;
+        }
+
+        /* ─── LIST ITEMS ─── */
+        .action-list {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: border-color 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .action-item:hover {
+            border-color: var(--orange-border);
+            transform: translateX(4px);
+        }
+
+        .action-item-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--orange-bg);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .action-item-icon svg {
+            width: 14px;
+            height: 14px;
+            color: var(--orange);
+        }
+
+        .action-item-text {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.55;
+        }
+
+        .action-item-text strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* ─── REFUND GRID ─── */
+        .refund-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .refund-card {
+            padding: 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: border-color 0.25s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+        }
+
+        .refund-card:hover {
+            border-color: var(--orange-border);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .refund-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refund-card-title svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .refund-card p {
+            font-size: 13.5px;
+            color: var(--text-2);
+            line-height: 1.55;
+        }
+
+        .refund-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--dark);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 48px 32px;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 48px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .logo { color: var(--text-inv); margin-bottom: 8px; }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: #636366;
+            line-height: 1.5;
+        }
+
+        .footer-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 12.5px;
+            color: #636366;
+            transition: color 0.2s;
+        }
+
+        .footer-email:hover { color: var(--text-inv-2); }
+        .footer-email svg { width: 13px; height: 13px; }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #48484A;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 13px;
+            color: #636366;
+            font-weight: 500;
+            padding: 3px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--text-inv-2); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+
+        .footer-copy { font-size: 11.5px; color: #3A3A3C; }
+
+        .footer-socials { display: flex; gap: 4px; }
+
+        .soc-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            color: #48484A;
+            transition: color 0.2s;
+        }
+
+        .soc-btn:hover { color: #636366; }
+        .soc-btn svg { width: 14px; height: 14px; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1060px) {
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-links { gap: 32px; }
+            .refund-grid { grid-template-columns: 1fr; }
+            .refund-card.full-width { grid-column: auto; }
+        }
+
+        @media (max-width: 680px) {
+            .wrap, .header-inner, .footer-inner, .notice-inner { padding-left: 20px; padding-right: 20px; }
+            .nav { display: none; }
+            .header-right { display: none; }
+            .burger { display: grid; }
+
+            .page-hero { padding: 48px 0 40px; }
+            .page-hero h1 { font-size: 28px; letter-spacing: -1px; }
+            .page-hero p { font-size: 14px; }
+
+            .content-card { padding: 24px 20px; }
+            .content-card h2 { font-size: 19px; }
+
+            .risk-table thead th { padding: 12px 14px; font-size: 10.5px; }
+            .risk-table tbody td { padding: 11px 14px; font-size: 13px; }
+
+            .refund-grid { grid-template-columns: 1fr; }
+            .refund-card.full-width { grid-column: auto; }
+
+            .footer-top { flex-direction: column; gap: 24px; }
+            .footer-links { flex-direction: column; gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="hdr">
+        <div class="header-inner">
+            <a href="index.html" class="logo">Kursov<em>24</em></a>
+
+            <nav class="nav">
+                <a href="about.html">О нас</a>
+                <a href="rules.html">Правила</a>
+                <a href="aml.html" class="active">AML-проверка</a>
+                <a href="partners.html">Партнеры</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="news.html">Новости</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active">RU</button>
+                    <button class="lang-btn">EN</button>
+                </div>
+                <button class="hdr-icon-btn" aria-label="Аккаунт">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+                <button class="hdr-icon-btn" aria-label="Тема">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+
+            <button class="burger" aria-label="Меню">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- SECURITY NOTICE -->
+    <div class="notice">
+        <div class="notice-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Наш сайт работает только по адресу <b>kursov24.org</b> &mdash; мы не предоставляем реквизиты вне нашего сайта.
+        </div>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="wrap">
+            <div class="page-hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                AML/KYC
+            </div>
+            <h1>AML/KYC проверка</h1>
+            <p>Политика противодействия отмыванию денег и финансированию терроризма</p>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Автоматическая AML-верификация -->
+    <section class="content-section reveal">
+        <div class="wrap">
+            <div class="content-card">
+                <h2>
+                    <span class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                    </span>
+                    Автоматическая AML-верификация
+                </h2>
+                <p class="section-desc">
+                    Сервис проводит автоматическую AML-верификацию с использованием блокчейн-анализатора <strong>BitOK</strong> и модели <strong>Risk-Score</strong>. Транзакции требуют, чтобы общий показатель риска (Overall Risk Score) не превышал <span class="highlight-value">70%</span>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Допустимые пороги по категориям -->
+    <section class="content-section reveal">
+        <div class="wrap">
+            <div class="content-card">
+                <h2>
+                    <span class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                    </span>
+                    Допустимые пороги по категориям
+                </h2>
+                <div class="risk-table-wrap">
+                    <table class="risk-table">
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Допустимый порог</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cat-name">Child Exploitation</td>
+                                <td><span class="threshold-val zero">0%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Darknet Marketplace</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Darknet Service</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Enforcement Action</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Fraudulent Exchange</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Illegal Service</td>
+                                <td><span class="threshold-val low">до 1%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Mixing Service</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Ransom</td>
+                                <td><span class="threshold-val zero">0%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Sanctions</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Scam</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Stolen Coins</td>
+                                <td><span class="threshold-val low">до 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Terrorism Financing</td>
+                                <td><span class="threshold-val zero">0%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="cat-name">Gambling</td>
+                                <td><span class="threshold-val high">до 50%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Что происходит при превышении порогов -->
+    <section class="content-section reveal">
+        <div class="wrap">
+            <div class="content-card">
+                <h2>
+                    <span class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </span>
+                    Что происходит при превышении порогов
+                </h2>
+                <p class="section-desc">При превышении установленных лимитов сервис имеет право предпринять следующие действия:</p>
+                <div class="action-list">
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 15l5-3-5-3z"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Приостановить обработку</strong> заявки до выяснения обстоятельств</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Запросить дополнительную информацию</strong> и документы у пользователя</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Провести верификацию</strong> личности пользователя (KYC/SoF)</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Отклонить операции</strong>, не прошедшие проверку по установленным критериям</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Процедура верификации KYC/SoF -->
+    <section class="content-section reveal">
+        <div class="wrap">
+            <div class="content-card">
+                <h2>
+                    <span class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </span>
+                    Процедура верификации KYC/SoF
+                </h2>
+                <p class="section-desc">
+                    Сервис может запросить верификацию KYC/SoF через <strong>SumSub</strong>. Процедура включает следующие этапы:
+                </p>
+                <div class="action-list">
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Документы, удостоверяющие личность</strong> &mdash; паспорт, ID-карта или водительское удостоверение</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Проверка liveness</strong> &mdash; подтверждение личности в режиме реального времени</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Подтверждение адреса</strong> &mdash; документ не старше 3 месяцев (выписка из банка, счёт за коммунальные услуги)</span>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <span class="action-item-text"><strong>Документация об источнике средств</strong> &mdash; подтверждение легального происхождения криптовалюты</span>
+                    </div>
+                </div>
+                <p class="section-desc" style="margin-top: 16px; padding: 14px 18px; background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: 12px; font-size: 13.5px;">
+                    Обработка заявки приостанавливается до момента предоставления запрашиваемых материалов.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Условия возврата средств -->
+    <section class="content-section reveal">
+        <div class="wrap">
+            <div class="content-card">
+                <h2>
+                    <span class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    </span>
+                    Условия возврата средств
+                </h2>
+                <div class="refund-grid reveal-children">
+                    <div class="refund-card">
+                        <div class="refund-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Добросовестное подтверждение
+                        </div>
+                        <p>Возврат средств с удержанием только сетевых комиссий (network fee).</p>
+                    </div>
+                    <div class="refund-card">
+                        <div class="refund-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Недостаточная верификация
+                        </div>
+                        <p>Возврат минус до 5% от суммы (максимум 100 USD).</p>
+                    </div>
+                    <div class="refund-card">
+                        <div class="refund-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Внешняя блокировка
+                        </div>
+                        <p>Возврат средств возможен только после полной разблокировки со стороны внешних сервисов.</p>
+                    </div>
+                    <div class="refund-card">
+                        <div class="refund-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Сроки возврата
+                        </div>
+                        <p>12&ndash;24 часа с момента принятия решения о возврате средств.</p>
+                    </div>
+                    <div class="refund-card full-width">
+                        <div class="refund-card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Правило 90 дней
+                        </div>
+                        <p>Если в течение 90 календарных дней не поступит официальный запрос на возврат цифровой валюты — она не подлежит возврату.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">Kursov<em>24</em></div>
+                    <p>Обмен криптовалют с 2021 года.</p>
+                    <a href="mailto:support@kursov24.org" class="footer-email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        support@kursov24.org
+                    </a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Сервис</h4>
+                        <a href="about.html">О нас</a>
+                        <a href="rules.html">Правила</a>
+                        <a href="partners.html">Партнеры</a>
+                        <a href="contacts.html">Контакты</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Помощь</h4>
+                        <a href="faq.html">FAQ</a>
+                        <a href="index.html">Как обменять</a>
+                        <a href="contacts.html">Техподдержка</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Мониторинги</h4>
+                        <a href="#">Bestchange</a>
+                        <a href="#">BitsMedia</a>
+                        <a href="#">ExNode</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span class="footer-copy">&copy; 2021 Kursov24</span>
+                <div class="footer-socials">
+                    <a href="#" class="soc-btn" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="#" class="soc-btn" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:support@kursov24.org" class="soc-btn" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        // ─── SCROLL REVEAL (IntersectionObserver) ───
+        var revealEls = document.querySelectorAll('.reveal, .reveal-children');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+
+        // ─── HEADER shadow on scroll ───
+        var hdr = document.getElementById('hdr');
+        window.addEventListener('scroll', function() {
+            hdr.style.boxShadow = window.scrollY > 8 ? '0 1px 8px rgba(0,0,0,0.06)' : 'none';
+        }, { passive: true });
+
+        // ─── LANGUAGE SWITCH ───
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>
